@@ -12,8 +12,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: rgb(14, 108, 153);
-  background: radial-gradient(circle, rgba(14, 108, 153, 1) 23%, rgb(40, 196, 235) 76%);
+  background: #A1E3BA;
+  background: linear-gradient(90deg, rgba(161, 227, 186, 1) 0%, rgba(47, 214, 117, 1) 50%, rgba(161, 227, 186, 1) 100%);
   font-family: 'Figtree', sans-serif;
   font-size: 1.4em;
   line-height: 1.5em;

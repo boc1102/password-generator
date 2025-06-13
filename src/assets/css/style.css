@@ -232,10 +232,12 @@ form div {
 }
 
 .pressed {
-  background-color: rgb(37, 197, 136);
+  background: RGB(37, 197, 136);
+  background: linear-gradient(112deg, rgba(37, 197, 136, 1) 44%, rgba(23, 235, 154, 1) 100%);
 }
 
 .pressed:hover {
+  background: fixed;
   background-color: rgb(55, 228, 161);
 }
 

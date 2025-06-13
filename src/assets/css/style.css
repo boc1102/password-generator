@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inconsolata:wght@200..900&display=swap');
+
+:root {
+  --lightgrey-color: rgb(201, 201, 201);
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(14, 108, 153);
+  background: radial-gradient(circle, rgba(14, 108, 153, 1) 23%, rgb(40, 196, 235) 76%);
+  font-family: 'Figtree', sans-serif;
+  font-size: 1.4em;
+  line-height: 1.5em;
+}
+
+.container {
+  position: relative;
+  max-width: 640px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 10px;
+}
+
+form input,
+form label,
+form button {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input,
+form label {
+  width: 100%;
+}
+
+form input {
+  font-size: 24px;
+  height: 50px;
+  padding: 0 20px;
+  border-width: 1px;
+  border-radius: 13px;
+}
+
+form input:focus {
+  outline: 1px solid var(--primary-color);
+}
+
+#generate-btn {
+  position: relative;
+  background: rgb(34, 175, 121);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  height: 50px;
+  cursor: pointer;
+  margin: auto auto;
+  margin-top: 2.3em;
+  border-radius: 2em;
+  width: 50%;
+  overflow: hidden;
+}
+
+#generate-btn:hover {
+  background: rgb(25, 124, 86);
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 600ms linear;
+  background-color: rgba(255, 255, 255, 0.315);
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 1.7em;
+}
+
+header p {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-size: 0.9em;
+  font-style: italic;
+  color: rgb(100, 100, 100);
+}
+
+.display-passwd {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding: 1em;
+  font-weight: bold;
+  color: rgb(34, 175, 121);
+  font-size: 1.3em;
+  font-family: 'Inconsolata', monospace;
+}
+
+.display-passwd span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+form div {
+  margin-bottom: 1.2rem;
+}
+
+.display-passwd .cpy-btn {
+  position: relative;
+  margin-left: auto;
+  background-color: #fff;
+  border-style: none;
+  padding: 5px 7px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.display-passwd .cpy-btn:hover {
+  background-color: #e2e2e2;
+}
+
+.cpy-btn .cpy-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.226);
+  transform: scale(0);
+  animation: cpy-ripple-effect 600ms ease-out;
+  pointer-events: none;
+}
+
+@keyframes cpy-ripple-effect {
+  to {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+.symbols-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.symbols-btn {
+  padding: 1em;
+  background-color: #fff;
+  border-width: 1px;
+  border-radius: 30px;
+  margin-left: 0.8em;
+  cursor: pointer;
+}
+
+.symbols-menu {
+  position: absolute;
+  bottom: 8%;
+  right: -55%;
+  max-width: 340px;
+  padding: 0.8em;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.symbols-menu p {
+  margin: 0;
+  margin-bottom: 7%;
+  text-align: center;
+}
+
+.symbols-selection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.symbols-selection button {
+  padding: 3%;
+  font-size: 1em;
+  font-family: 'Inconsolata', monospace;
+  border-width: 1px;
+  border-radius: 50px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.notification {
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.4em;
+  margin: 0;
+  padding: 0 0.7em;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  right: -8%;
+  bottom: 26%;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.pressed {
+  background-color: rgb(37, 197, 136);
+}
+
+.pressed:hover {
+  background-color: rgb(55, 228, 161);
+}
+
+.unpressed {
+  background-color: #fff;
+}
+
+.unpressed:hover {
+  background-color: rgb(179, 236, 212);
+}
+
+.error-window {
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.6em 0.8em;
+  background-color: rgb(219, 86, 86);
+  align-items: center;
+  margin: 0;
+  border-radius: 20px;
+  max-width: 400px;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+
+.error-window.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.error-msg {
+  color: #fff;
+  font-size: 0.9em;
+  margin-left: 1em;
+}
+
+.error-icon {
+  max-width: 15%;
+  max-height: 15%;
+}
+
+.symbols-options {
+  margin-top: 1em;
+}
+
+.symbols-options button {
+  background-color: rgb(34, 175, 121);
+  color: #ffffff;
+  border-width: 1px;
+  border-radius: 20px;
+  padding: 0.2em 1em;
+  font-weight: bold;
+  font-size: 0.6em;
+  cursor: pointer;
+}
+
+.symbols-options button:hover {
+  background-color: rgb(42, 201, 140);
+}
+
+.symbols-options button:active {
+  background-color: rgb(40, 155, 111);
+}

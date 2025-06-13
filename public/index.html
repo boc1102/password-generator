@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Gerador de Senha</title>
+  <title>Random Password Generator</title>
 </head>
 
 <body>
   <section class="container">
     <header>
-      <h1>Gerador de Senhas</h1>
-      <p>(Máximo de 20 caracteres)</p>
+      <h1>Random Password Generator</h1>
+      <p>(20 characters maximum)</p>
     </header>
     <div class="display-passwd">
-      <span>(Senha)</span>
+      <span>(Password)</span>
       <button type="button" class="cpy-btn white-btn-hover">
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#434343">
           <title>Copy</title>
@@ -23,32 +23,32 @@
             d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z" />
         </svg>
       </button>
-      <p class="notification hidden">Copiado!</p>
+      <p class="notification hidden">Copied!</p>
     </div>
     <form target="_self">
       <div>
-        <label for="numbers">Quantidade de números:</label>
+        <label for="numbers">Amount of numbers:</label>
         <input id="numbers" class="number-input" type="number" value="0" min="0" max="20">
       </div>
       <div>
-        <label for="uppercase">Quantidade de letras maiúsculas:</label>
+        <label for="uppercase">Amount of uppercase letters:</label>
         <input id="uppercase" class="number-input" type="number" value="0" min="0" max="20">
       </div>
       <div>
-        <label for="lowercase">Quantidade de letras minúsculas:</label>
+        <label for="lowercase">Amount of lowercase letters:</label>
         <input id="lowercase" class="number-input" type="number" value="0" min="0" max="20">
       </div>
       <div>
-        <label for="symbols">Quantidade de símbolos:</label>
+        <label for="symbols">Amount of symbols:</label>
         <div class="symbols-container">
           <input id="symbols" class="number-input" type="number" value="0" min="0" max="20">
           <button class="symbols-btn unpressed" type="button">@</button>
         </div>
       </div>
-      <button id="generate-btn" class="ripple-btn" type="button">Gerar senha</button>
+      <button id="generate-btn" class="ripple-btn" type="button">Generate password</button>
     </form>
     <div class="symbols-menu hidden">
-      <p>Seleção de símbolos</p>
+      <p>Symbol selection</p>
       <div class="symbols-selection">
         <button class="pressed" type="button">~</button>
         <button class="pressed" type="button">`</button>
@@ -84,8 +84,8 @@
         <button class="pressed" type="button">/</button>
       </div>
       <div class="symbols-options">
-        <button class="select-all-btn" type="button">Selecionar todos</button>
-        <button class="clear-all-btn" type="button">Limpar todos</button>
+        <button class="select-all-btn" type="button">Select all</button>
+        <button class="clear-all-btn" type="button">Clear all</button>
       </div>
     </div>
   </section>
@@ -94,7 +94,7 @@
       <path
         d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
     </svg>
-    <p class="error-msg">Pelo menos 1 símbolo deve ser selecionado!</p>
+    <p class="error-msg">At least 1 symbol must be selected!</p>
   </div>
   <script src="./assets/js/bundle.js"></script>
 </body>

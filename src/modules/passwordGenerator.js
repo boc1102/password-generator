@@ -22,7 +22,7 @@ function getRndSymbol(symbols) {
     return symbols[0];
 }
 
-export default function gerarSenha(qtdNum, qtdUpper, qtdLower, qtdSimbolo, symbols) {
+export default function generatePassword(qtdNum, qtdUpper, qtdLower, qtdSimbolo, symbols) {
     const total = qtdNum + qtdUpper + qtdLower + qtdSimbolo;
     let password = '';
 
@@ -50,5 +50,5 @@ export default function gerarSenha(qtdNum, qtdUpper, qtdLower, qtdSimbolo, symbo
             ops.shift();
     }
 
-    return password !== '' ? password : '(Senha)';
+    return password !== '' ? password : '(Password)';
 }

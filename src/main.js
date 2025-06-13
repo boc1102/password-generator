@@ -1,4 +1,4 @@
-import gerarSenha from './modules/geradorSenha';
+import generatePassword from './modules/passwordGenerator';
 
 import './assets/css/style.css';
 
@@ -12,13 +12,13 @@ let symbols = allSymbols.slice();
 
 const numberInputs = document.querySelectorAll('.number-input');
 
-function displaySenha() {
+function displayPassword() {
     const qtdNum = Number(document.querySelector('#numbers').value);
     const qtdUpper = Number(document.querySelector('#uppercase').value);
     const qtdLower = Number(document.querySelector('#lowercase').value);
     const qtdSimbolo = Number(document.querySelector('#symbols').value);
 
-    displayTxt.textContent = gerarSenha(qtdNum, qtdUpper, qtdLower, qtdSimbolo, symbols);
+    displayTxt.textContent = generatePassword(qtdNum, qtdUpper, qtdLower, qtdSimbolo, symbols);
 }
 
 function balanceMaxValue() {
@@ -72,7 +72,7 @@ document.querySelector('#generate-btn').addEventListener('click', function (e) {
     const qtdSimbolo = Number(document.querySelector('#symbols').value);
 
     if (symbols.length > 0 || qtdSimbolo <= 0) {
-        displaySenha();
+        displayPassword();
     } else {
         const errorNotification = document.querySelector('.error-window');
 
@@ -110,7 +110,7 @@ document.querySelector('.cpy-btn').addEventListener('click', function (e) {
 
     // Copy password to clipboard
     const txt = displayTxt.textContent;
-    if (txt !== '(Senha)')
+    if (txt !== '(Password)')
         navigator.clipboard.writeText(txt);
     else navigator.clipboard.writeText('');
 
@@ -164,8 +164,6 @@ buttons.forEach(function (button) {
 
 // Clear all button funcionality
 document.querySelector('.clear-all-btn').addEventListener('click', function (e) {
-    // Press/unpress button
-
     // Clear array
     symbols.splice(0, symbols.length);
 
@@ -178,8 +176,6 @@ document.querySelector('.clear-all-btn').addEventListener('click', function (e) 
 
 // Select all button funcionality
 document.querySelector('.select-all-btn').addEventListener('click', function (e) {
-    // Press/unpress button
-
     // Fill array
     symbols = allSymbols.slice();
 

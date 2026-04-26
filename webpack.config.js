@@ -1,7 +1,6 @@
-const path = require('path'); // CommonJS
+const path = require('path');
 
 module.exports = {
-  mode: 'production',
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'public', 'assets', 'js'),
@@ -12,10 +11,7 @@ module.exports = {
       exclude: /node_modules/,
       test: /\.js$/,
       use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/env']
-        }
+        loader: 'babel-loader'
       }
     }, {
       test: /\.css$/,

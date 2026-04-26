@@ -1,54 +1,52 @@
+/**
+ * Generates a secure random integer between min and max (inclusive).
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {number}
+ */
+function secureRandomInt(min, max) {
+    const range = max - min + 1;
+    const randomBuffer = new Uint32Array(1);
+    window.crypto.getRandomValues(randomBuffer);
+    return min + (randomBuffer[0] % range);
+}
+
+function getRndUppercase() {
+    return String.fromCharCode(secureRandomInt(65, 90));
+}
+
+function getRndLowercase() {
+    return String.fromCharCode(secureRandomInt(97, 122));
+}
+
+function getRndSymbol(symbols) {
+    const index = secureRandomInt(0, symbols.length - 1);
+    return symbols[index];
+}
+
 function shuffleArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+        const j = secureRandomInt(0, i);
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }
 
-function getRndInteger(min = 0, max = 9) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+export default function generatePassword(numCount, upperCount, lowerCount, symbolCount, symbols) {
+    const total = numCount + upperCount + lowerCount + symbolCount;
+    if (total <= 0) return '(Password)';
 
-function getRndUppercase() {
-    return String.fromCharCode(getRndInteger(65, 90));
-}
-
-function getRndLowercase() {
-    return String.fromCharCode(getRndInteger(97, 122));
-}
-
-function getRndSymbol(symbols) {    
-    shuffleArray(symbols);
-    return symbols[0];
-}
-
-export default function generatePassword(qtdNum, qtdUpper, qtdLower, qtdSimbolo, symbols) {
-    const total = qtdNum + qtdUpper + qtdLower + qtdSimbolo;
     let password = '';
+    const pool = [];
 
-    let ops = [
-        { id: 1, qtd: qtdNum, func: getRndInteger },
-        { id: 2, qtd: qtdUpper, func: getRndUppercase },
-        { id: 3, qtd: qtdLower, func: getRndLowercase },
-        { id: 4, qtd: qtdSimbolo, func: getRndSymbol }];
-    
-    ops = ops.filter((op) => {
-        return op.qtd > 0;
-    });
+    // Add required characters to the pool
+    for (let i = 0; i < numCount; i++) pool.push(String(secureRandomInt(0, 9)));
+    for (let i = 0; i < upperCount; i++) pool.push(getRndUppercase());
+    for (let i = 0; i < lowerCount; i++) pool.push(getRndLowercase());
+    for (let i = 0; i < symbolCount; i++) pool.push(getRndSymbol(symbols));
 
-    for (let i = 0; i < total; i++) {
-        let op;
-        shuffleArray(ops);
-        op = ops[0];
-        if (op.id == 4)
-            password += String(op.func(symbols));
-        else
-            password += String(op.func());
+    // Shuffle the pool to ensure character type distribution is random
+    shuffleArray(pool);
+    password = pool.join('');
 
-        op.qtd--;
-        if (op.qtd <= 0)
-            ops.shift();
-    }
-
-    return password !== '' ? password : '(Password)';
+    return password;
 }

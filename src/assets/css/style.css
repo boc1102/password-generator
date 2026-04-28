@@ -167,14 +167,44 @@ form div {
   cursor: pointer;
 }
 
+@keyframes symbolsMenuShow {
+  0% {clip-path: inset(70% 100% 20% 0 round 20px); display: none;}
+  40% {clip-path: inset(70% 0 20% 0 round 20px); display: block;}
+  100% {clip-path: inset(0 0 0 0 round 20px); display: block;}
+}
+
+@keyframes symbolsMenuHide {
+  0%   { clip-path: inset(0 0 0 0 round 20px); display: block; }
+  40% {clip-path: inset(70% 0 20% 0 round 20px); display: block;}
+  99%  { clip-path: inset(70% 100% 20% 0 round 20px); display: block; }
+  100% { clip-path: inset(70% 100% 20% 0 round 20px); display: none; }
+}
+
 .symbols-menu {
+  display: none;
   position: absolute;
   bottom: 8%;
   right: -55%;
   max-width: 340px;
   padding: 0.8em;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: #fff;
+}
+
+.symbols-menu.show {
+  animation: 0.35s symbolsMenuShow ease-in backwards;
+}
+
+.symbols-menu.hidden {
+  animation: 0.35s symbolsMenuHide ease-in forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 .symbols-menu p {
@@ -198,14 +228,6 @@ form div {
   border-radius: 50px;
   margin: 3px;
   cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-.show {
-  display: block;
 }
 
 .notification {
@@ -250,6 +272,7 @@ form div {
 }
 
 .error-window {
+  opacity: 0;
   display: flex;
   position: fixed;
   bottom: 20px;
@@ -261,16 +284,15 @@ form div {
   border-radius: 20px;
   max-width: 400px;
   transform: translateY(100%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;
   z-index: 1000;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  opacity: 0;
 }
 
 .error-window.show {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: auto;
 }
 

@@ -171,8 +171,13 @@ document.querySelector(".cpy-btn").addEventListener("click", function (e) {
 // Symbols menu functionality
 document.querySelector(".symbols-btn").addEventListener("click", function () {
   const symbolsMenu = document.querySelector(".symbols-menu");
-  symbolsMenu.classList.toggle("hidden");
-  symbolsMenu.classList.toggle("show");
+  if (symbolsMenu.classList.contains("first")) {
+    symbolsMenu.classList.toggle("first");
+    symbolsMenu.classList.toggle("show");
+  } else {
+    symbolsMenu.classList.toggle("hidden");
+    symbolsMenu.classList.toggle("show");
+  }
   toggleButtonState(this);
 });
 
